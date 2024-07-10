@@ -8,7 +8,7 @@ const produtos = [];
 
 // Retorno dos Produtos
 server.get('/produtos', (req, res) =>{
-    return res.json(produtos)
+    return res.json(produtos);
 });
 
 // Criar um novo Produto
@@ -17,7 +17,7 @@ server.post('/criarProduto', (req, res) => {
     const novoProduto = { name, descricao };
     produtos.push(novoProduto);
 
-    return res.json(produtos)
+    return res.json(produtos);
 });
 
 // Excluir Produto
@@ -32,6 +32,18 @@ server.delete('/excluirProduto/:index', (req, res) => {
     }
 });
 
+// Atualizar Produto
+server.put('/produtos/:index', (req, res) => {
+    const { index } = req.params;
+    const { name, descricao } = req.body;
+
+    if (index >= 0 && index < produtos.length) {
+        produtos[index] = { name, descricao }; // Atualiza o objeto no índice especificado
+        return res.json(produtos);
+    } else {
+        return res.status(404).json({ error: 'Produto não encontrado' });
+    }
+});
 
 
 
