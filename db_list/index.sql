@@ -16,6 +16,7 @@ create table Clientes(
     email varchar(20),
     phone varchar(10),
     endereco varchar(100),
+    status_user boolean not null
 
     CONSTRAINT fk_id_produto FOREIGN KEY (id_produto) REFERENCES Produtos(id_produto)
 );
@@ -23,5 +24,6 @@ create table Clientes(
 create table Usuarios(
     id_usuario int primary key auto_increment,
     name_usuario varchar(20) not null,
-    pass varchar(20) not null
+    user varchar(20) not null,
+    pass varchar(20) not null,
 );
