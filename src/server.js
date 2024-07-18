@@ -11,6 +11,8 @@ const server = express();
 server.use(cors());
 server.use(bodyParser.urlencoded({extended:false}));
 
+server.use('/api', routes); // ira fazer com que todos os endereços das rotas venha com o /api
+
 server.listen(process.env.PORT, ()=>{
     console.log(`Servidor rodando em http://localhost:${process.env.PORT}`);
 })
